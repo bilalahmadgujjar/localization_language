@@ -37,12 +37,13 @@ class MyApp extends StatelessWidget {
       ],
       child: Consumer<LanguageChangeController>(
         builder: (context, provider, child) {
+          final locale = provider.appLocale ?? localLanguage;
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
 
 
-            locale: provider.appLocale ?? localLanguage,
+            locale: locale,
 
             localizationsDelegates: const [
               AppLocalizations.delegate,
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
             supportedLocales: const [
               Locale('en'),
               Locale('es'),
+              Locale('ur'),
             ],
 
             theme: ThemeData(
@@ -62,6 +64,16 @@ class MyApp extends StatelessWidget {
               ),
             ),
 
+
+            // 👇 Add this for urdu that start from right side and other language start from the left side
+            builder: (context, child) {
+              return Directionality(
+                textDirection: locale.languageCode == 'ur'
+                    ? TextDirection.rtl
+                    : TextDirection.ltr,
+                child: child!,
+              );
+            },
             home: const Homepage(),
           );
         },

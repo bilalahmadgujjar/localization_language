@@ -9,5 +9,23 @@ class AppLocalizationsUr extends AppLocalizations {
   AppLocalizationsUr([String locale = 'ur']) : super(locale);
 
   @override
-  String get helloWorld => 'Hello World';
+  String get helloWorld => 'ہیلو ورلڈ';
+
+  @override
+  String get welcome => 'خوش آمدید';
+
+  @override
+  String get selectLanguage => 'زبان منتخب کریں';
+
+  @override
+  String get name => 'نام';
+
+  @override
+  String get email => 'ای میل';
+
+  @override
+  String get save => 'محفوظ کریں';
+
+  @override
+  String get cancel => 'منسوخ کریں';
 }

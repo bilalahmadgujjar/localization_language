@@ -95,3 +95,7 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+
+# command use for create language files automatically in the system
+# flutter gen-l10n

@@ -1,3 +1,9 @@
 {
-    "helloWorld": "Hello World"
+  "helloWorld": "Hello World",
+  "welcome": "Welcome",
+  "selectLanguage": "Select Language",
+  "name": "Name",
+  "email": "Email",
+  "save": "Save",
+  "cancel": "Cancel"
 }

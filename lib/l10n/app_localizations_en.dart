@@ -10,4 +10,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get helloWorld => 'Hello World';
+
+  @override
+  String get welcome => 'Welcome';
+
+  @override
+  String get selectLanguage => 'Select Language';
+
+  @override
+  String get name => 'Name';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get save => 'Save';
+
+  @override
+  String get cancel => 'Cancel';
 }
