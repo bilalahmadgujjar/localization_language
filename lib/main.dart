@@ -56,6 +56,7 @@ class MyApp extends StatelessWidget {
               Locale('en'),
               Locale('es'),
               Locale('ur'),
+              Locale('hi'),
             ],
 
             theme: ThemeData(
@@ -68,7 +69,7 @@ class MyApp extends StatelessWidget {
             // 👇 Add this for urdu that start from right side and other language start from the left side
             builder: (context, child) {
               return Directionality(
-                textDirection: locale.languageCode == 'ur'
+                textDirection: locale.languageCode == 'ur' || locale.languageCode == 'hi'
                     ? TextDirection.rtl
                     : TextDirection.ltr,
                 child: child!,

@@ -5,7 +5,7 @@ import 'package:multi_language/controller/language_change_controller.dart';
 import 'package:multi_language/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
-enum Language { english, spanish, urdu }
+enum Language { english, spanish, urdu, hindi }
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -15,26 +15,35 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+
+  TextEditingController nameTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final localization = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.helloWorld),
+        centerTitle: true,
+        backgroundColor: Colors.blue,
+        title: Text(AppLocalizations.of(context)!.helloWorld,style: TextStyle(color: Colors.white),),
 
         actions: [
           Consumer<LanguageChangeController>(
             builder: (context, provider, child) {
               return PopupMenuButton(
+                color: Colors.white,
                 onSelected: (Language item) {
                   if (Language.english.name == item.name) {
                     provider.changeLanguage(Locale('en'));
                   } else if (Language.spanish.name == item.name) {
                     provider.changeLanguage(Locale('es'));
-                  } else {
+                  } else if (Language.urdu.name == item.name) {
                     provider.changeLanguage(Locale('ur'));
                   }
+                  else
+                    {
+                      provider.changeLanguage(Locale('hi'));
+                    }
                 },
                 itemBuilder: (BuildContext context) =>
                     <PopupMenuEntry<Language>>[
@@ -49,6 +58,11 @@ class _HomepageState extends State<Homepage> {
                       ),
 
                       PopupMenuItem(value: Language.urdu, child: Text('اردو')),
+
+                      PopupMenuItem(
+                        value: Language.hindi,
+                        child: Text('हिन्दी'),
+                      ),
                     ],
               );
             },
@@ -74,10 +88,15 @@ class _HomepageState extends State<Homepage> {
             SizedBox(height: 20),
 
             TextField(
+              controller: nameTextController,
               decoration: InputDecoration(
                 hintText: localization.name,
                 border: const OutlineInputBorder(),
               ),
+              onChanged: (value)
+              {
+                print(value);
+              },
             ),
 
 
@@ -93,6 +112,12 @@ class _HomepageState extends State<Homepage> {
               children: [
                 Expanded(
                   child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      side: const BorderSide(
+                        color: Colors.blue,
+                        width: 1.5,
+                      ),
+                    ),
                     onPressed: () {},
                     child: Text(localization.cancel),
                   ),
@@ -102,12 +127,17 @@ class _HomepageState extends State<Homepage> {
 
                 Expanded(
                   child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      foregroundColor: Colors.white,
+                    ),
                     onPressed: () {},
                     child: Text(localization.save),
                   ),
                 ),
               ],
             ),
+
 
           ],
         ),
